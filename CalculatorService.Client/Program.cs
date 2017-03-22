@@ -13,6 +13,7 @@ namespace CalculatorService.Client
 
             while (!command.ToLower().Equals("exit"))
             {
+
                 switch (command)
                 {
                     case "add":
@@ -24,8 +25,12 @@ namespace CalculatorService.Client
                     case "mult": 
                         Console.WriteLine(CalculatorService.testMult());
                         break;
-                    case "div": break;
-                    case "sqrt": break;
+                    case "div": 
+                        Console.WriteLine(CalculatorService.testDiv());
+                        break;
+                    case "sqrt": 
+                        Console.WriteLine(CalculatorService.testSqrt());
+                        break;
                     case "query": 
                         Console.WriteLine(CalculatorService.testQuery());
                         break;

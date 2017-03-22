@@ -127,6 +127,84 @@ namespace CalculatorService.Client
             return response.Product.ToString();
         }
 
+        public static string testDiv()
+        {
+            // Request Test Object
+            DivRequest request = new DivRequest();
+            request.Dividend = 11;
+            request.Divisor = 2;
+
+            // Response Test Object
+            DivResponse response;
+
+            // Calling service...
+            HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(String.Format("{0}{1}", ENDPOINT, "div"));
+            Req.Method = "POST";
+            Req.ContentType = "application/json";
+
+            Req.Headers.Add("X-Evi-Tracking-Id", "12345678");
+
+            using (var streamWriter = new StreamWriter(Req.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(request);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            // Getting response...
+            HttpWebResponse Resp = (HttpWebResponse)Req.GetResponse();
+
+            StreamReader sr = new StreamReader(Resp.GetResponseStream(), Encoding.UTF8);
+
+            string s = sr.ReadToEnd();
+            sr.Close();
+            Resp.Close();
+
+            response = JsonConvert.DeserializeObject<DivResponse>(s);
+            return " Quotient = " + response.Quotient.ToString() + " Remainder = " + response.Remainder.ToString();
+        }
+
+        public static string testSqrt()
+        {
+            // Request Test Object
+            SqrtRequest request = new SqrtRequest();
+            request.Number = 16;
+            
+
+            // Response Test Object
+            SqrtResponse response;
+
+            // Calling service...
+            HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(String.Format("{0}{1}", ENDPOINT, "sqrt"));
+            Req.Method = "POST";
+            Req.ContentType = "application/json";
+
+            Req.Headers.Add("X-Evi-Tracking-Id", "12345678");
+
+            using (var streamWriter = new StreamWriter(Req.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(request);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            // Getting response...
+            HttpWebResponse Resp = (HttpWebResponse)Req.GetResponse();
+
+            StreamReader sr = new StreamReader(Resp.GetResponseStream(), Encoding.UTF8);
+
+            string s = sr.ReadToEnd();
+            sr.Close();
+            Resp.Close();
+
+            response = JsonConvert.DeserializeObject<SqrtResponse>(s);
+            return response.Square.ToString();
+        }
+
         public static string testQuery()
         {
             // Request Test Object
