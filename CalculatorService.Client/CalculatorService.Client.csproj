@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +53,9 @@
     <Compile Include="Models\AddResponse.cs" />
     <Compile Include="Models\MultRequest.cs" />
     <Compile Include="Models\MultResponse.cs" />
+    <Compile Include="Models\Operation.cs" />
+    <Compile Include="Models\QueryRequest.cs" />
+    <Compile Include="Models\QueryResponse.cs" />
     <Compile Include="Models\SubRequest.cs" />
     <Compile Include="Models\SubResponse.cs" />
     <Compile Include="Program.cs" />

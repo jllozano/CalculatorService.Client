@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CalculatorService.Client
 {
@@ -30,7 +26,9 @@ namespace CalculatorService.Client
                         break;
                     case "div": break;
                     case "sqrt": break;
-                    case "query": break;
+                    case "query": 
+                        Console.WriteLine(CalculatorService.testQuery());
+                        break;
                     default:
                         Console.WriteLine("Invalid command. Try: add | sub | mult | div | sqrt | query");
                         break;
