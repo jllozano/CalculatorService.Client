@@ -90,5 +90,43 @@ namespace CalculatorService.Client
             response = JsonConvert.DeserializeObject<SubResponse>(s);
             return response.Difference.ToString();
         }
+
+        public static string testMult()
+        {
+            // Request Test Object
+            MultRequest request = new MultRequest();
+            request.Factors = new int[] { 8, 3, 2 };            
+
+            // Response Test Object
+            MultResponse response;
+
+            // Calling service...
+            HttpWebRequest Req = (HttpWebRequest)WebRequest.Create(String.Format("{0}{1}", ENDPOINT, "mult"));
+            Req.Method = "POST";
+            Req.ContentType = "application/json";
+
+            Req.Headers.Add("X-Evi-Tracking-Id", "12345678");
+
+            using (var streamWriter = new StreamWriter(Req.GetRequestStream()))
+            {
+                string json = JsonConvert.SerializeObject(request);
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+
+            // Getting response...
+            HttpWebResponse Resp = (HttpWebResponse)Req.GetResponse();
+
+            StreamReader sr = new StreamReader(Resp.GetResponseStream(), Encoding.UTF8);
+
+            string s = sr.ReadToEnd();
+            sr.Close();
+            Resp.Close();
+
+            response = JsonConvert.DeserializeObject<MultResponse>(s);
+            return response.Product.ToString();
+        }
     }
 }
