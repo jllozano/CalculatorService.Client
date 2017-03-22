@@ -22,7 +22,9 @@ namespace CalculatorService.Client
                     case "add":
                         Console.WriteLine(CalculatorService.testAdd());                        
                         break;
-                    case "sub": break;
+                    case "sub":
+                        Console.WriteLine(CalculatorService.testSub());
+                        break;
                     case "mult": break;
                     case "div": break;
                     case "sqrt": break;
