@@ -238,7 +238,7 @@ namespace CalculatorService.Client
             Resp.Close();
 
             response = JsonConvert.DeserializeObject<QueryResponse>(s);
-            return JsonConvert.SerializeObject(response.Operations);
+            return JsonConvert.SerializeObject(response);
         }
     }
 }
